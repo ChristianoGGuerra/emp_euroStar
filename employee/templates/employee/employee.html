@@ -1,0 +1,137 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'employee/style.css' %}">
+
+{% block center %}
+<div class="bs-square">
+    <h1> Employee Registration </h1>
+    <form class="form-inline" action="" role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <h3>Company Data</h3>
+            <div class="area">
+                <label for="id_company_number">Employee number</label><br/>
+                {{ form.company_number }}
+                {{ form.errors.company_number }}
+            </div>
+            <div class="area">
+                {{ form.start_date.label }}<br/>
+                {{ form.start_date }}
+                {{ form.errors.start_date }}
+            </div>
+            <div class="area">
+                {{ form.area_of_work.label }}<br/>
+                {{ form.area_of_work }}
+            </div>
+        </div>
+        <div class="form-group">
+            <h3>Employee Data</h3>
+            <div class="area">
+                {{ form.prefix.label }} <br/>
+                {{ form.prefix }}
+            </div>
+            <div class="area">
+                {{ form.name.label }} <br/>
+                {{ form.name }}
+                {{ form.errors.name }}
+            </div>
+            <div class="area">
+                {{ form.middle_name.label }}<br/>
+                {{ form.middle_name }}
+            </div>
+            <div class="area">
+                {{ form.last_name.label }}<br/>
+                {{ form.last_name }}
+                {{ form.errors.last_name }}
+            </div>
+            <div class="area">
+                {{ form.date_of_birth.label }}<br/>
+                {{ form.date_of_birth }}
+                {{ form.errors.date_of_birth }}
+            </div>
+            <div class="area">
+                {{ form.mobile_phone.label }}<br/>
+                {{ form.mobile_phone }}
+                {{ form.errors.mobile_phone }}
+            </div>
+            <div class="area">
+                {{ form.email.label }}<br/>
+                {{ form.email }}
+                {{ form.errors.email }}
+            </div>
+        </div>
+
+        <div class="area">
+            {{ form.disabled.label }}
+            {{ form.disabled }}
+        </div>
+
+        <button type="submit" class="submit">Submit</button>
+
+</form>
+</div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Add Number...';
+		form_fields[1].style='width:110px;';
+		form_fields[2].type='date';
+		form_fields[3].placeholder='Insert the Employee area in the Company...';
+		form_fields[3].style='width:500px;';
+		form_fields[4].style='width:55px;';
+		form_fields[5].placeholder='Insert the Employee First Name...';
+		form_fields[5].style='width:500px;';
+		form_fields[6].placeholder='Insert the Employee Middle Name...';
+		form_fields[6].style='width:500px;';
+		form_fields[7].placeholder='Insert the Employee Last Name...';
+		form_fields[7].style='width:500px;';
+		form_fields[8].type='date';
+		form_fields[9].placeholder='Add Phone Number...';
+		form_fields[9].type='tel';
+		form_fields[9].style='width:150px;';
+		form_fields[10].placeholder='Add Email...';
+		form_fields[10].type='email';
+		form_fields[10].style='width:500px;';
+
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+	}
+
+    var prefixInput = form_fields[4]
+	var prefixSelect = document.createElement('select');
+
+    var currentValue = prefixInput.value || prefixSelect.getAttribute('value');
+
+    var options = [{value: '', text: '--'},
+                   {value: 'Mr', text: 'Mr.'},
+                   {value: 'Mrs', text: 'Mrs.'},
+                   {value: 'Ms', text: 'Ms.'},
+                   {value: 'Miss', text: 'Miss'},
+                   {value: 'Prof', text: 'Prof.'},
+                   {value: 'Dr', text: 'Dr.'},
+                   {value: 'Eng', text: 'Eng.'},
+                   ];
+    options.forEach(function (option, i) {
+        var optionElement = document.createElement('option');
+        optionElement.appendChild(document.createTextNode(option.text));
+        optionElement.setAttribute('value', option.value);
+        prefixSelect.appendChild(optionElement);
+
+        // if the option matches the existing input's value, select it
+        if (option.value == currentValue) {
+            prefixSelect.selectedIndex = i;
+        }
+    });
+    for (var i = 0; i < prefixInput.attributes.length; ++ i) {
+    var attribute = prefixInput.attributes[i];
+
+    // type and value don't apply, so skip them
+    // ** you might also want to skip style, or others -- modify as needed **
+    if (attribute.name != 'type' && attribute.name != 'value') {
+        prefixSelect.setAttribute(attribute.name, attribute.value);
+    }
+}
+
+    // finally, replace the old input element with the new select element
+    prefixInput.parentElement.replaceChild(prefixSelect, prefixInput);
+</script>
+{% endblock %}
