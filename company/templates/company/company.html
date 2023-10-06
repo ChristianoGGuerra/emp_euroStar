@@ -12,40 +12,40 @@
                 <div class="identify">
                     {{ form.identify.label }}<br/>
                     {{ form.identify }}
-                    {{ form.error.identify }}
+                    <font color="red">{{ form.error.identify }}</font><br/>
                 </div>
             </div>
             <div class="area">
                 <div class="name">
                     {{ form.name.label }}<br/>
                     {{ form.name }}
-                    {{ form.error.name }}
+                    <font color="red">{{ form.error.name }}</font><br/>
                 </div>
             </div>
 
             <div class="area">
                 {{ form.url.label}}<br/>
                 {{ form.url }}
-                {{ form.errors.url }}
+                <font color="red">{{ form.error.url }}</font><br/>
             </div>
 
             <div class="area">
                 {{ form.contact.label }}<br/>
                 {{ form.contact }}
-                {{ form.error.contact }}
+                <font color="red">{{ form.error.contact }}</font><br/>
             </div>
 
             <div class="area">
                 {{ form.activity.label }}<br/>
                 {{ form.activity }}
-                {{ form.error.activity }}
+                <font color="red">{{ form.error.activity }}</font><br/>
             </div>
         </div>
         <div class="form-group">
             <div class="area">
                 {{ form.address.label }}<br/>
                 {{ form.address }}
-                {{ form.error.address }}
+                <font color="red">{{ form.error.address }}</font><br/>
             </div>
         </div>
         <button type="submit" class="submit">Submit</button>

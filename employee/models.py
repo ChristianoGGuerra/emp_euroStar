@@ -16,8 +16,8 @@ class Employee_Info(models.Model):
     email = models.CharField(max_length=150, validators=[EmailValidator()])
     area_of_work = models.CharField(max_length=150, blank=True)
     disabled = models.BooleanField(blank=True)
-    # address = models.ForeignKey("addr.Addr_Info", on_delete=models.CASCADE)
-    # company = models.ForeignKey("company.Comp_Info", on_delete=models.CASCADE)
+    address = models.ForeignKey("addr.Addr_Info", on_delete=models.CASCADE)
+    company = models.ForeignKey("company.Comp_Info", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.company_number) + ' - ' + self.name + ' ' + self.last_name + ' --> ' + self.email

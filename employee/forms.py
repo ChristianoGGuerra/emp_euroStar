@@ -24,5 +24,7 @@ class Employee_Form(forms.ModelForm):
             'mobile_phone',
             'email',
             'area_of_work',
+            'address',
+            'company',
             'disabled',
         ]

@@ -1,7 +1,7 @@
 from django import forms
 from django.core import validators
 
-from .models import Addr_Info
+from .models import Addr_Info, Country_List
 
 
 class Addr_Form(forms.ModelForm):

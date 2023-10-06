@@ -11,43 +11,43 @@
                 <div class="street">
                     <label class="control-label">Street address</label><br/>
                     {{ form.address_line1 }}
-                    {{ form.errors.address_line1 }}
+                    <font color="red">{{ form.errors.address_line1 }}</font><br/>
                 </div>
             </div>
             <div class="area">
                 <div class="number">
                     {{ form.number.label }}<br/>
                     {{ form.number }}
-                    {{ form.errors.number }}
+                    <font color="red">{{ form.errors.number }}</font><br/>
                 </div>
             </div>
 
             <div class="area">
                 <label class="control-label">More Address Information</label><br/>
                 {{ form.others }}
-                {{ form.errors.others }}
+                <font color="red">{{ form.errors.others }}</font><br/>
             </div>
         </div>
         <div class="form-group">
             <div class="area">
                 {{ form.city.label }}<br/>
                 {{ form.city }}
-                {{ form.errors.city }}
+                <font color="red">{{ form.errors.city }}</font><br/>
             </div>
             <div class="area">
                 {{ form.county.label }}<br/>
                 {{ form.county }}
-                {{ form.errors.county }}
+                <font color="red">{{ form.errors.county }}</font><br/>
             </div>
             <div class="area">
                 {{ form.country.label }}<br/>
                 {{ form.country }}
-                {{ form.errors.country }}
+                <font color="red">{{ form.errors.country }}</font><br/>
             </div>
             <div class="area">
                 {{ form.zip_code.label }}<br/>
                 {{ form.zip_code }}
-                {{ form.errors.zip_code }}
+                <font color="red">{{ form.errors.zip_code }}</font><br/>
             </div>
         </div>
         <button type="submit" class="submit">Submit</button>
