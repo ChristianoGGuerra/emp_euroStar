@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'employee/style.css' %}">
+
+{% block center %}
+<div class="bs-success">
+    <h1> Company was registered with success! </h1>
+
+</div>
+<div>
+    <a class="back" href="{{request.META.HTTP_REFERER|escape}}">Go back</a>
+</div>
+{% endblock %}

@@ -1,8 +1,7 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'employee/style.css' %}" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'employee/style.css' %}">
 
 {% block center %}
-
 <div class="bs-square">
     <h1 class="panel-title">Address Creation Page</h1>
     <form class="form-inline" action="" role="form" method="post">
@@ -12,41 +11,49 @@
                 <div class="street">
                     <label class="control-label">Street address</label><br/>
                     {{ form.address_line1 }}
+                    {{ form.errors.address_line1 }}
                 </div>
             </div>
             <div class="area">
                 <div class="number">
                     {{ form.number.label }}<br/>
                     {{ form.number }}
+                    {{ form.errors.number }}
                 </div>
             </div>
 
             <div class="area">
                 <label class="control-label">More Address Information</label><br/>
                 {{ form.others }}
+                {{ form.errors.others }}
             </div>
         </div>
         <div class="form-group">
             <div class="area">
                 {{ form.city.label }}<br/>
                 {{ form.city }}
+                {{ form.errors.city }}
             </div>
             <div class="area">
                 {{ form.county.label }}<br/>
                 {{ form.county }}
+                {{ form.errors.county }}
             </div>
             <div class="area">
                 {{ form.country.label }}<br/>
                 {{ form.country }}
+                {{ form.errors.country }}
             </div>
             <div class="area">
                 {{ form.zip_code.label }}<br/>
                 {{ form.zip_code }}
+                {{ form.errors.zip_code }}
             </div>
         </div>
         <button type="submit" class="submit">Submit</button>
     </form>
 </div>
+
 <script>
     var form_fields = document.getElementsByTagName('input')
 		form_fields[1].placeholder='Add the Street name...';
@@ -68,5 +75,4 @@
         form_fields[field].className += ' form-control'
 	}
 </script>
-
 {% endblock %}

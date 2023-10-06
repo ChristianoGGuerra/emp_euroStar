@@ -1,0 +1,71 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'company/style.css' %}" xmlns="http://www.w3.org/1999/html">
+
+{% block center %}
+
+<div class="bs-square">
+    <h1 class="panel-title">Address Creation Page</h1>
+    <form class="form-inline" action="" role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="area">
+                <div class="identify">
+                    {{ form.identify.label }}<br/>
+                    {{ form.identify }}
+                    {{ form.error.identify }}
+                </div>
+            </div>
+            <div class="area">
+                <div class="name">
+                    {{ form.name.label }}<br/>
+                    {{ form.name }}
+                    {{ form.error.name }}
+                </div>
+            </div>
+
+            <div class="area">
+                {{ form.url.label}}<br/>
+                {{ form.url }}
+                {{ form.errors.url }}
+            </div>
+
+            <div class="area">
+                {{ form.contact.label }}<br/>
+                {{ form.contact }}
+                {{ form.error.contact }}
+            </div>
+
+            <div class="area">
+                {{ form.activity.label }}<br/>
+                {{ form.activity }}
+                {{ form.error.activity }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="area">
+                {{ form.address.label }}<br/>
+                {{ form.address }}
+                {{ form.error.address }}
+            </div>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Add the Unique Identify...';
+		form_fields[1].style='width:150px;';
+		form_fields[2].placeholder='Add the company nname...';
+		form_fields[2].style='width:250px;';
+		form_fields[3].placeholder='Add the company URL...';
+		form_fields[3].style='width:250px;';
+		form_fields[4].placeholder='Add the contact of the responsable';
+		form_fields[4].style='width:250px;';
+		form_fields[5].placeholder='Add the company activity...';
+		form_fields[5].style='width:250px;';
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+	}
+</script>
+
+{% endblock %}

@@ -8,7 +8,7 @@ class Addr_Form(forms.ModelForm):
     def clean(self):
         clean_data = super(Addr_Form, self).clean()
 
-    zip_code = forms.CharField(validators=[validators.RegexValidator('^(^[0-9]{5}(?:-[0-9]{4})?$|^$)')])
+    zip_code = forms.CharField(validators=[validators.RegexValidator('^(^[0-9]{4}(?:-[0-9]{3})?$|^$)')])
 
     class Meta:
         model = Addr_Info
