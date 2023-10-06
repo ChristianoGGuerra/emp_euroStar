@@ -1,8 +1,11 @@
 from django.urls import path
 
-from . import views
+from .views import (
+    addr_data,
+    success)
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", addr_data, name="index"),
+    path("success/", success, name="success"),
 ]

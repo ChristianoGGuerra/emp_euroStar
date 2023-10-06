@@ -1,52 +1,72 @@
-<div class="container">
-<div class="panel panel-primary">
-  <div class="panel-heading">
+{% load static %}
+<link rel="stylesheet" href="{% static 'employee/style.css' %}" xmlns="http://www.w3.org/1999/html">
+
+{% block center %}
+
+<div class="bs-square">
     <h1 class="panel-title">Address Creation Page</h1>
-  </div>
-  <div class="panel-body">
-   <input id="autocomplete" placeholder="Enter your address"
-      onFocus="geolocate()" type="text" class="form-control">
-      <br>
-   <div id="address">
-      <div class="row">
-         <div class="col-md-6">
-            <label class="control-label">Street address</label>
-            <input class="form-control" id="street_number" disabled="true">
-         </div>
-         <div class="col-md-6">
-            <label class="control-label">Number</label>
-            <input class="form-control" id="number" disabled="true">
-         </div>
-          <div class="col-md-6">
-            <label class="control-label">More Address Information</label>
-            <input class="form-control" id="others" disabled="true">
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-6">
-            <label class="control-label">City</label>
-            <input class="form-control field" id="locality" disabled="true">
-         </div>
-         <div class="col-md-6">
-            <label class="control-label">State</label>
-            <input class="form-control" id="administrative_area_level_1" disabled="true">
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-6">
-            <label class="control-label">Zip code</label>
-            <input class="form-control" id="postal_code" disabled="true">
-         </div>
-         <div class="col-md-6">
-            <label class="control-label">Country</label>
-            <input class="form-control" id="country" disabled="true">
-         </div>
-      </div>
-   </div>
+    <form class="form-inline" action="" role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="area">
+                <div class="street">
+                    <label class="control-label">Street address</label><br/>
+                    {{ form.address_line1 }}
+                </div>
+            </div>
+            <div class="area">
+                <div class="number">
+                    {{ form.number.label }}<br/>
+                    {{ form.number }}
+                </div>
+            </div>
+
+            <div class="area">
+                <label class="control-label">More Address Information</label><br/>
+                {{ form.others }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="area">
+                {{ form.city.label }}<br/>
+                {{ form.city }}
+            </div>
+            <div class="area">
+                {{ form.county.label }}<br/>
+                {{ form.county }}
+            </div>
+            <div class="area">
+                {{ form.country.label }}<br/>
+                {{ form.country }}
+            </div>
+            <div class="area">
+                {{ form.zip_code.label }}<br/>
+                {{ form.zip_code }}
+            </div>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+    </form>
 </div>
-  </div>
-    <div>
-        <button type="button"> Submit </button>
-    </div>
-</div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&libraries=places&callback=initAutocomplete" async defer></script>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Add the Street name...';
+		form_fields[1].style='width:500px;';
+		form_fields[2].placeholder='Add the number...';
+		form_fields[2].style='width:130px;';
+		form_fields[3].placeholder='Other Address Information...';
+		form_fields[3].style='width:500px;';
+		form_fields[4].placeholder='Insert the city name';
+		form_fields[4].style='width:400px;';
+		form_fields[5].placeholder='Insert the County or State name...';
+		form_fields[5].style='width:400px;';
+		form_fields[6].placeholder='Insert the Country...';
+		form_fields[6].style='width:300px;';
+		form_fields[7].placeholder='Add Zip Code...';
+		form_fields[7].style='width:130px;';
+
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+	}
+</script>
+
+{% endblock %}

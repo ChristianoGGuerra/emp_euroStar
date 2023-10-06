@@ -9,3 +9,7 @@ class Addr_Info(models.Model):
     county = models.CharField(max_length=150)
     country = models.CharField(max_length=150)
     zip_code = models.CharField(max_length=10)
+
+    def __str__(self):
+        return (self.address_line1 + ' - ' + str(self.number) + ' ' + self.others + ' --> '
+                + self.city + ' - ' + self.county + ' - ' + self.country)

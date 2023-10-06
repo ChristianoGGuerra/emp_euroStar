@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 from .forms import Employee_Form
-from .models import Employee_Info
 
 
 def employee_data(request):
@@ -18,7 +17,7 @@ def employee_data(request):
         else:
             return render(request, 'employee/employee.html', {'form': emp})
 
-    # return redirect('success/')
+    return render(request, 'employee/employee.html', {'form': emp})
 
 
 def success(request):

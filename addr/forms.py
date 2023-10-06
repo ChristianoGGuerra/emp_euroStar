@@ -1,9 +1,23 @@
 from django import forms
-from django.forms import ModelForm
+from django.core import validators
+
 from .models import Addr_Info
 
 
-class AddrForm(ModelForm):
+class Addr_Form(forms.ModelForm):
+    def clean(self):
+        clean_data = super(Addr_Form, self).clean()
+
+    zip_code = forms.CharField(validators=[validators.RegexValidator('^(^[0-9]{5}(?:-[0-9]{4})?$|^$)')])
+
     class Meta:
         model = Addr_Info
-        fields = '__all__'
+        fields = [
+            'address_line1',
+            'number',
+            'others',
+            'city',
+            'county',
+            'country',
+            'zip_code'
+        ]

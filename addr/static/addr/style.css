@@ -1,21 +1,31 @@
-div {
+.bs-square{
+  margin-left: 250px;
+  margin-top: 30px;
   margin: 20px;
   width: 96%;
-  border: 2px solid gray;
-
-
-.container {
-  margin-top: 20px;
+  border: 2px solid black;
 }
 
-h1 {
+.form-group{
+  margin: 10px;
+  border: 1px solid gray;
+}
+
+.area{
+  margin: 10px;
+}
+
+h1{
+  margin: 0 auto;
   font-weight: 800
   font-size: 2.5rem;
   color: #141b4d;
+  text-align: center;
 }
 
-button {
+.submit{
   border-radius: 5px;
   font-weight: 800
   background-color: #1f38c2;
+  margin-left: 95%;
 }
