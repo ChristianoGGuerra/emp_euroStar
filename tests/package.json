@@ -1,0 +1,27 @@
+{
+  "name": "cypress-axe-automationstar",
+  "version": "0.0.1",
+  "description": "Testing a django project using Cypress and Axe.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "cypress:info": "cypress info",
+    "cypress:verify": "cypress verify",
+    "cypress:version": "cypress version",
+    "cypress:open": "cypress open",
+    "cypress:run": "npx --no-install cypress run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cypress/skip-test": "2.6.1",
+    "axe-core": "3.2.2",
+    "cypress": "13.4.0",
+    "cypress-axe": "0.12.2",
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "cypress-image-snapshot": "^4.0.1",
+    "cypress-plugin-tab": "^1.0.5"
+  },
+  "engines": {
+    "node": "^21.1.0"
+  }
+}

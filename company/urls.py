@@ -1,10 +1,10 @@
 from django.urls import path
 
 from .views import (company_data,
-                    success)
+                    company_list)
 
 
 urlpatterns = [
     path("", company_data, name="index"),
-    path("success/", success, name="success"),
+    path("result/", company_list, name="result"),
 ]

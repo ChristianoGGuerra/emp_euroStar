@@ -1,12 +1,18 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'employee/style.css' %}">
+<link rel="stylesheet" href="{% static 'addr/style.css' %}">
 
 {% block center %}
-<div class="bs-success">
-    <h1> Address was registered with success! </h1>
-
-</div>
-<div>
-    <a class="back" href="{{request.META.HTTP_REFERER|escape}}">Go back</a>
-</div>
+<title>
+    Address
+</title>
+{% for addr in address.all %}
+    {% if forloop.last %}
+        <h1>{{ addr }} </br>had been added with success!</h1>
+    {% endif %}
+{% endfor %}
+<ul>
+{% for addr in address.all %}
+    <li>{{addr.address_line1}} - {{addr.number}}, {{ addr.others }}; City: {{ addr.city }} - County: {{ addr.county }} - Country: {{addr.country.name}}</li>
+{% endfor %}
+</ul>
 {% endblock %}

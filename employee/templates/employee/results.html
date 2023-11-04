@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'employee/style.css' %}">
+
+{% block center %}
+{% for emp in employee.all %}
+    {% if forloop.last %}
+        <h1>{{ emp.name }} had been added with success!</h1>
+    {% endif %}
+{% endfor %}
+
+
+<ul>
+{% for emp in employee.all %}
+    <li>{{emp.company_number}}: {{emp.prefix}}. {{ emp.name }} {{ emp.last_name }} --> {{ emp.area_of_work }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

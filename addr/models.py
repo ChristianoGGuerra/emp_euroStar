@@ -22,4 +22,4 @@ class Addr_Info(models.Model):
 
     def __str__(self):
         return (self.address_line1 + ' - ' + str(self.number) + ' ' + self.others + ' --> '
-                + self.city + ' - ' + self.county + ' - ' + self.country)
+                + self.city + ' - ' + self.county )

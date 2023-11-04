@@ -2,77 +2,73 @@
 <link rel="stylesheet" href="{% static 'employee/style.css' %}">
 
 {% block center %}
-<div class="bs-square">
+<head>
+    <title>
+        Address
+    </title>
+</head>
+<body>
+<div class="bs-square" role="main">
     <h1 class="panel-title">Address Creation Page</h1>
     <form class="form-inline" action="" role="form" method="post">
         {% csrf_token %}
-        <div class="form-group">
-            <div class="area">
-                <div class="street">
-                    <label class="control-label">Street address</label><br/>
-                    {{ form.address_line1 }}
-                    <font color="red">{{ form.errors.address_line1 }}</font><br/>
-                </div>
-            </div>
-            <div class="area">
-                <div class="number">
-                    {{ form.number.label }}<br/>
-                    {{ form.number }}
-                    <font color="red">{{ form.errors.number }}</font><br/>
-                </div>
-            </div>
-
-            <div class="area">
-                <label class="control-label">More Address Information</label><br/>
+        <section aria-label="Local" class="form-group">
+            <label class="control-label area">Street name:<br/>
+                {{ form.address_line1 }}
+                <font color="red">{{ form.errors.address_line1 }}</font><br/>
+            </label>
+            <label class="control-label area">Number:<br/>
+                {{ form.number }}
+                <font color="red">{{ form.errors.number }}</font><br/>
+            </label>
+            </span>
+            <label class="control-label area">More Address Information:<br/>
                 {{ form.others }}
                 <font color="red">{{ form.errors.others }}</font><br/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="area">
-                {{ form.city.label }}<br/>
+            </label>
+        </section>
+        <section aria-label="Regional" class="form-group">
+            <label class="control-label area">City:<br/>
                 {{ form.city }}
                 <font color="red">{{ form.errors.city }}</font><br/>
-            </div>
-            <div class="area">
-                {{ form.county.label }}<br/>
+            </label>
+            <label class="control-label area">County or State:<br/>
                 {{ form.county }}
                 <font color="red">{{ form.errors.county }}</font><br/>
-            </div>
-            <div class="area">
-                {{ form.country.label }}<br/>
-                {{ form.country }}
-                <font color="red">{{ form.errors.country }}</font><br/>
-            </div>
-            <div class="area">
-                {{ form.zip_code.label }}<br/>
+            </label>
+            <label class="control-label area">Country:</label><br/>
+            {{ form.country }}
+            <font color="red">{{ form.errors.country }}</font><br/>
+            <label class="control-label area">Zip Code:<br/>
                 {{ form.zip_code }}
                 <font color="red">{{ form.errors.zip_code }}</font><br/>
-            </div>
-        </div>
+            </label>
+        </section>
         <button type="submit" class="submit">Submit</button>
     </form>
 </div>
-
+</body>
 <script>
     var form_fields = document.getElementsByTagName('input')
-		form_fields[1].placeholder='Add the Street name...';
+		form_fields[1].placeholder='Add the street name...';
 		form_fields[1].style='width:500px;';
 		form_fields[2].placeholder='Add the number...';
 		form_fields[2].style='width:130px;';
 		form_fields[3].placeholder='Other Address Information...';
 		form_fields[3].style='width:500px;';
-		form_fields[4].placeholder='Insert the city name';
+		form_fields[4].placeholder='Add the name of the city...';
 		form_fields[4].style='width:400px;';
-		form_fields[5].placeholder='Insert the County or State name...';
+		form_fields[5].placeholder='Add the name of the county/state...';
 		form_fields[5].style='width:400px;';
-		form_fields[6].placeholder='Insert the Country...';
-		form_fields[6].style='width:300px;';
-		form_fields[7].placeholder='Add Zip Code...';
-		form_fields[7].style='width:130px;';
+		form_fields[6].placeholder='Add the zip code...';
+		form_fields[6].style='width:130px;';
 
     for (var field in form_fields) {
-        form_fields[field].className += ' form-control'
+        form_fields[field].className += 'form-control area';
 	}
+    document.getElementById('id_country').className += 'form-control area';
+    document.documentElement.setAttribute('lang', navigator.language);
+    document.getElementById('id_country').setAttribute('aria-label', 'Country');
+    var collection = document.getElementsByTagName('form');
 </script>
 {% endblock %}
