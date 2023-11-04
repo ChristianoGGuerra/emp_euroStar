@@ -5,3 +5,4 @@
 
 .DS_Store
 euroemp/__pycache__/
+tests/node_modules/
