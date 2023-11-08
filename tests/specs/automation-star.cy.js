@@ -43,16 +43,19 @@ describe('AutomationStar -> Address Functional Test', () => {
             cy.checkA11y();
         });
 
-        it('Should have accessibility using desktop sizes - MacBook 16 and MacBook 11', () => {
+        it('Should check accessibility using desktop sizes - MacBook 16 and MacBook 11', () => {
             cy.devicesResizing('macbook-11', 'macbook-16');
+            cy.checkA11y();
         });
 
-        it('Should have accessibility using Iphone X and Samsung S10', () => {
+        it('Should check accessibility using Iphone X and Samsung S10', () => {
             cy.devicesResizing('iphone-x', 'samsung-s10');
+            cy.checkA11y();
         });
 
-        it('Should have accessibility using Ipad 2 and Samsung Note 9', () => {
+        it('Should check accessibility using Ipad 2 and Samsung Note 9', () => {
             cy.devicesResizing('ipad-2', 'samsung-note9');
+            cy.checkA11y();
         });
 
         it.only('Should be able to use only keyboard', () => {
