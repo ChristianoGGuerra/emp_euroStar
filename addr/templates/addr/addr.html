@@ -67,8 +67,12 @@
         form_fields[field].className += 'form-control area';
 	}
     document.getElementById('id_country').className += 'form-control area';
-    document.documentElement.setAttribute('lang', navigator.language);
-    document.getElementById('id_country').setAttribute('aria-label', 'Country');
+    //TODO: Remove the comments below to fix some tests.
+    // document.documentElement.setAttribute('lang', navigator.language);
+    // document.getElementById('id_country').setAttribute('aria-label', 'Country');
     var collection = document.getElementsByTagName('form');
+    //TODO: Remove the lines below to fix some tests.
+    document.getElementById('id_others').setAttribute('tabindex', 1);
+    document.getElementById('id_county').setAttribute('tabindex', 2);
 </script>
 {% endblock %}
