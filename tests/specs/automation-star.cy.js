@@ -55,7 +55,7 @@ describe('AutomationStar -> Address Functional Test', () => {
             cy.devicesResizing('ipad-2', 'samsung-note9');
         });
 
-        it.only('Should be able to use only keyboard', () => {
+        it('Should be able to use only keyboard', () => {
             addrPages.streetAddrInput().tab().then(() => addrPages.streetNumberInput().should('be.focused'));
             addrPages.streetNumberInput().tab().then(() => addrPages.streetOtherInfoInput().should('be.focused'));
             addrPages.streetOtherInfoInput().tab().then(() => addrPages.cityInput().should('be.focused'));
