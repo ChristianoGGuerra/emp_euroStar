@@ -10,6 +10,7 @@ const addrPages = {
     countyInput: () => cy.get('#id_county'),
     countyLabel: () => cy.get('#id_county').parent(),
     countrySelector: () => cy.get('#id_country'),
+    countryItemSelector: () => cy.get('#id_country'),
     countryLabel: () => cy.get('#id_country').parent(),
     zipCodeInput: () => cy.get('#id_zip_code'),
     zipCodeLabel: () => cy.get('#id_zip_code').parent(),

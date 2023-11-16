@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import { url } from '../helpers/common.helper';
 import addrPages from '../page/address';
+import listOfAddressAddedPage from '../page/addr-result';
 
 Cypress.on('uncaught:exception', (err, runnable) => { return false });
 
@@ -43,27 +44,62 @@ describe('AutomationStar -> Address Functional Test', () => {
             cy.checkA11y();
         });
 
-        it('Should have accessibility using desktop sizes - MacBook 16 and MacBook 11', () => {
+        it('Should check accessibility using desktop sizes - MacBook 16 and MacBook 11', () => {
             cy.devicesResizing('macbook-11', 'macbook-16');
+            cy.checkA11y();
         });
 
-        it('Should have accessibility using Iphone X and Samsung S10', () => {
+        it('Should check accessibility using Iphone X and Samsung S10', () => {
             cy.devicesResizing('iphone-x', 'samsung-s10');
+            cy.checkA11y();
         });
 
-        it('Should have accessibility using Ipad 2 and Samsung Note 9', () => {
+        it('Should check accessibility using Ipad 2 and Samsung Note 9', () => {
             cy.devicesResizing('ipad-2', 'samsung-note9');
+            cy.checkA11y();
         });
 
         it('Should be able to use only keyboard', () => {
-            addrPages.streetAddrInput().tab().then(() => addrPages.streetNumberInput().should('be.focused'));
-            addrPages.streetNumberInput().tab().then(() => addrPages.streetOtherInfoInput().should('be.focused'));
-            addrPages.streetOtherInfoInput().tab().then(() => addrPages.cityInput().should('be.focused'));
-            addrPages.cityInput().tab().then(() => addrPages.countyInput().should('be.focused'));
-            addrPages.countyInput().tab().then(() => addrPages.countrySelector().should('be.focused'));
-            addrPages.countrySelector().tab().then(() => addrPages.zipCodeInput().should('be.focused'));
-            addrPages.zipCodeInput().tab().then(() => addrPages.submitButton().should('be.focused'));
-        })
+            cy.get('body').tab().then(() => {
+                addrPages.streetAddrInput().should('be.focused');
+                addrPages.streetAddrInput().type('Sonnenallee street');
+            });
+            addrPages.streetAddrInput().tab().then(() => {
+                addrPages.streetNumberInput().should('be.focused');
+                addrPages.streetNumberInput().type('10');
+            });
+            addrPages.streetNumberInput().tab().then(() => {
+                addrPages.streetOtherInfoInput().should('be.focused');
+                addrPages.streetOtherInfoInput().type('Automation Star Conference Nº floor')
+            });
+            addrPages.streetOtherInfoInput().tab().then(() => {
+                addrPages.cityInput().should('be.focused');
+                addrPages.cityInput().type('Berlin');
+            });
+            addrPages.cityInput().tab().then(() => {
+                addrPages.countyInput().should('be.focused');
+                addrPages.countyInput().type('Brandenburg');
+            });
+            addrPages.countyInput().tab().then(() => {
+                addrPages.countrySelector().should('be.focused')
+                addrPages.countrySelector().select(82);
+
+            });
+            addrPages.countrySelector().tab().then(() => {
+                addrPages.zipCodeInput().should('be.focused');
+                addrPages.zipCodeInput().type('4050-123');
+            });
+            addrPages.zipCodeInput().tab().then(() => {
+                addrPages.submitButton().should('be.focused');
+                addrPages.submitButton().click();
+            });
+            cy.url().should('include', '/address/result/');
+            listOfAddressAddedPage.title().should('contain.text', 'had been added with success!');
+            listOfAddressAddedPage
+            .listOfAddrs()
+            .eq(0)
+            .should('have.text', 'Sonnenallee street - 10, Automation Star Conference Nº floor; City: Berlin - County: Brandenburg - Country: Germany');
+        });
     });
 });
   
